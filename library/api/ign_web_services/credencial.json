@@ -1,9 +1,9 @@
 {
-	"ignServiceKey" : "essentiels",
-	"ignServiceUrl" : "https://wxs.ign.fr/",
+	"ignServiceKey" : "altimetrie",
+	"ignServiceUrl" : "https://data.geopf.fr/",
 	"services": {
 		"alti":{
-			"ignEntryPoints" : "/alti/rest/elevation.json?"
+			"ignEntryPoints" : "/1.0/calcul/alti/rest/elevation.json?"
 		}
 	}		
 	
