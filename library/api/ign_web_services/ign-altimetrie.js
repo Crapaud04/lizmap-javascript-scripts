@@ -13,7 +13,7 @@ var lizmapIgnAltimetrie = function() {
                  OpenLayers.Util.getParameterString({
                  "repository": lizUrls.params.repository,
                  "project": lizUrls.params.project,
-                 "path": "media/js/".concat(lizUrls.params.project,"/credencial.json")
+                 "path": "media/js/default/credencial.json")
                  })
             );
 
@@ -28,7 +28,7 @@ var lizmapIgnAltimetrie = function() {
         }
     });
 
-    function getIgnJsonResponse(service, params, aCallback){
+    function getIgnJsonResponse( params, aCallback){
         var fullUrl = '';
         var ep = ignEntryPoints;
         var fullUrl = ignServiceUrl + ignServiceKey + ep;
@@ -58,10 +58,12 @@ var lizmapIgnAltimetrie = function() {
         var qParams = {
             'lon': lon,
             'lat':lat,
-            'srs': lizMap.map.projection.projCode
+            'resource':'ign_rge_alti_wld',
+			'indent':false,
+			'zonly':true
         }
-        getIgnJsonResponse('alti', qParams, function(data){
-            var alt = data['elevations'][0]['z'];
+        getIgnJsonResponse(qParams, function(data){
+            var alt = data['elevations'][0];
             $('#ign_altimetrie .menu-content').html('Altitude :'.concat(' ',alt));
         });
     }
